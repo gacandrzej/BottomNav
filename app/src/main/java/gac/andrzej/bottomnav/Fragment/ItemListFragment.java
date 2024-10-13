@@ -1,6 +1,8 @@
 package gac.andrzej.bottomnav.Fragment;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +13,9 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
+import java.util.Objects;
 
 import gac.andrzej.bottomnav.Adapter.ItemAdapter;
 import gac.andrzej.bottomnav.Database.DatabaseHelper;
@@ -44,6 +49,14 @@ public class ItemListFragment extends Fragment {
 
         recyclerView = rootView.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(recyclerView.getContext(), R.drawable.divider));
+        recyclerView.addItemDecoration(itemDecorator);
+
+        /*DividerItemDecoration itemDecorator2 = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.HORIZONTAL);
+        itemDecorator2.setDrawable(ContextCompat.getDrawable(recyclerView.getContext(), R.drawable.divider_vertical));
+        recyclerView.addItemDecoration(itemDecorator2);*/
+
 
         databaseHelper = new DatabaseHelper(getContext());
         itemList = databaseHelper.getAllItems();
@@ -125,7 +138,7 @@ public class ItemListFragment extends Fragment {
 //        pictureInput.setText(currentItem.getPicture());
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext())
-                .setTitle("Add Item")
+                .setTitle("Add new product")
                 .setView(dialogView)
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
@@ -171,7 +184,7 @@ public class ItemListFragment extends Fragment {
         pictureInput.setText(currentItem.getPicture());
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext())
-                .setTitle("Update Item")
+                .setTitle("Update product")
                 .setView(dialogView)
                 .setPositiveButton("Update", new DialogInterface.OnClickListener() {
                     @Override

@@ -14,7 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.HashMap;
 import java.util.Map;
 
-import gac.andrzej.bottomnav.Fragment.GalleryFragment;
+import gac.andrzej.bottomnav.Fragment.BasketFragment;
 import gac.andrzej.bottomnav.Fragment.HomeFragment;
 import gac.andrzej.bottomnav.Fragment.ItemListFragment;
 import gac.andrzej.bottomnav.Fragment.SearchFragment;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize fragments once and store in a map
         fragmentMap = new HashMap<>();
         fragmentMap.put(R.id.nav_home, new HomeFragment());
-        fragmentMap.put(R.id.nav_gallery, new GalleryFragment());
+        fragmentMap.put(R.id.nav_gallery, new BasketFragment());
         fragmentMap.put(R.id.nav_search, new SearchFragment());
         fragmentMap.put(R.id.nav_item_list, new ItemListFragment());
 

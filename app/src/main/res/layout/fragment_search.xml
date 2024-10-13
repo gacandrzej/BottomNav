@@ -14,11 +14,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/button_add_item"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Item" />
+        android:background="#768790"
+        android:backgroundTint="@color/blue"
+        />
+
+
 </LinearLayout>

@@ -11,4 +11,6 @@
     <string name="ItemList">ItemList</string>
     <string name="Search">Search</string>
     <string name="addProduct">Add new product</string>
+    <string name="Basket">Basket</string>
+    <string name="Admin">Admin</string>
 </resources>
