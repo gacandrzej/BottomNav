@@ -1,4 +1,4 @@
-package gac.andrzej.bottomnav;
+package gac.andrzej.bottomnav.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -60,5 +60,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return itemList;
     }
+
+    // Method to update an item by ID
+    public int updateItem(int id, String newName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, newName);  // Update the new name
+
+        // Updating row
+        return db.update(TABLE_ITEMS, values, COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)});
+    }
+
+
+
+
 }
 
