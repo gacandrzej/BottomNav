@@ -12,6 +12,10 @@
 
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/baseline_add_24"
+        android:icon="@drawable/baseline_approval_24"
         android:title="@string/Profile" />
+    <item
+        android:id="@+id/nav_item_list"
+        android:icon="@drawable/baseline_add_24"
+        android:title="@string/ItemList" />
 </menu>

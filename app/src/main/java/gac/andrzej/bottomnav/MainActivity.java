@@ -16,6 +16,7 @@ import java.util.Map;
 
 import gac.andrzej.bottomnav.Fragment.GalleryFragment;
 import gac.andrzej.bottomnav.Fragment.HomeFragment;
+import gac.andrzej.bottomnav.Fragment.ItemListFragment;
 import gac.andrzej.bottomnav.Fragment.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentMap.put(R.id.nav_home, new HomeFragment());
         fragmentMap.put(R.id.nav_gallery, new GalleryFragment());
         fragmentMap.put(R.id.nav_profile, new ProfileFragment());
+        fragmentMap.put(R.id.nav_item_list, new ItemListFragment());
 
         // Handle window insets for edge-to-edge experience
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
