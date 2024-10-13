@@ -1,13 +1,10 @@
 package gac.andrzej.bottomnav.Fragment;
 
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -23,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
-import java.util.Objects;
 
 import gac.andrzej.bottomnav.Adapter.ItemAdapter;
 import gac.andrzej.bottomnav.Database.DatabaseHelper;
