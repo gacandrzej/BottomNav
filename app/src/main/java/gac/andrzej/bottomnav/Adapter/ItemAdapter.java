@@ -10,25 +10,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
-    private List<String> itemList;
+import gac.andrzej.bottomnav.Model.Item;
+import gac.andrzej.bottomnav.R;
 
-    public ItemAdapter(List<String> itemList) {
-        this.itemList = itemList;
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
+
+    private List<Item> itemList;
+
+    public ItemAdapter(List<Item> itemsList) {
+        this.itemList = itemsList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(android.R.layout.simple_list_item_1, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String item = itemList.get(position);
-        holder.itemTextView.setText(item);
+        Item item = itemList.get(position);
+        holder.nameTextView.setText(item.getName());
+        holder.priceTextView.setText(String.valueOf(item.getPrice()));
+        holder.descriptionTextView.setText(item.getDescription());
     }
 
     @Override
@@ -37,12 +42,20 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView itemTextView;
+        public TextView nameTextView;
+        public TextView priceTextView;
+        public TextView descriptionTextView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            itemTextView = itemView.findViewById(android.R.id.text1);
+            nameTextView = itemView.findViewById(R.id.item_name);
+            priceTextView = itemView.findViewById(R.id.item_price);
+            descriptionTextView = itemView.findViewById(R.id.item_description);
         }
     }
+    // Update the list in the adapter and notify the change
+    public void updateList(List<Item> newList) {
+        this.itemList = newList;
+        notifyDataSetChanged();
+    }
 }
-

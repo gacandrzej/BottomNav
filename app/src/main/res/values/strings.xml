@@ -9,4 +9,6 @@
     <string name="Gallery">Gallery</string>
     <string name="Profile">Profile</string>
     <string name="ItemList">ItemList</string>
+    <string name="Search">Search</string>
+    <string name="addProduct">Add new product</string>
 </resources>

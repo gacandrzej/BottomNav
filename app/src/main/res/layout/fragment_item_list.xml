@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/red"
-    >
-
-    <Button
-        android:id="@+id/button_add_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Item" />
+    android:background="#A28582">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addProduct"
+        android:layout_gravity="end|bottom"
+        app:rippleColor="@color/red"
+        android:src="@drawable/baseline_add_24"
+        android:contentDescription="@string/addProduct"
+        android:layout_margin="16dp"
+        />
+
+
 
 
 </LinearLayout>

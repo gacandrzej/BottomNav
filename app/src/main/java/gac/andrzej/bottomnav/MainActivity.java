@@ -17,7 +17,7 @@ import java.util.Map;
 import gac.andrzej.bottomnav.Fragment.GalleryFragment;
 import gac.andrzej.bottomnav.Fragment.HomeFragment;
 import gac.andrzej.bottomnav.Fragment.ItemListFragment;
-import gac.andrzej.bottomnav.Fragment.ProfileFragment;
+import gac.andrzej.bottomnav.Fragment.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentMap = new HashMap<>();
         fragmentMap.put(R.id.nav_home, new HomeFragment());
         fragmentMap.put(R.id.nav_gallery, new GalleryFragment());
-        fragmentMap.put(R.id.nav_profile, new ProfileFragment());
+        fragmentMap.put(R.id.nav_search, new SearchFragment());
         fragmentMap.put(R.id.nav_item_list, new ItemListFragment());
 
         // Handle window insets for edge-to-edge experience
