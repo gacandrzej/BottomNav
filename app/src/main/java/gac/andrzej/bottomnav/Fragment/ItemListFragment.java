@@ -162,7 +162,6 @@ public class ItemListFragment extends Fragment {
         dialogBuilder.show();
     }
 
-
     // Method to show a dialog for updating an item
     // Inside ItemListFragment.java
     private void showUpdateDialog(final int position) {
