@@ -62,7 +62,7 @@ public class ItemListFragment extends Fragment {
 
         FloatingActionButton addButton = rootView.findViewById(R.id.button_add_item);
         addButton.setOnClickListener(v -> {
-            //databaseHelper.addItem("kakao", 23.99F,"best product","aaa");
+            databaseHelper.addItem("kakao", 23.99F,"best product","aaa");
             itemList.clear();
             itemList.addAll(databaseHelper.getAllItems());
             itemAdapter.notifyDataSetChanged();

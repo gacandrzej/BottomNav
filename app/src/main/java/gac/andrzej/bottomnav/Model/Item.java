@@ -3,12 +3,9 @@ package gac.andrzej.bottomnav.Model;
 public class Item {
     private int id;
     private String name;
-
-   private  float price;
-
-   private String description;
-
-   private String picture;
+    private float price;
+    private String description;
+    private String picture;
 
     public Item(int id, String name, float price, String description, String picture) {
         this.id = id;

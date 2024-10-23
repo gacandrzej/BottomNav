@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -9,25 +10,41 @@
         android:id="@+id/edit_item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Item Name" />
+        android:autofillHints="name"
+        android:hint="@string/ItemName"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A" />
 
     <EditText
         android:id="@+id/edit_item_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:autofillHints="price"
+        android:hint="@string/Price"
         android:inputType="numberDecimal"
-        android:hint="Price" />
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A" />
 
     <EditText
         android:id="@+id/edit_item_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Description" />
+        android:autofillHints="description"
+        android:hint="@string/Description"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/edit_item_picture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Picture URL" />
+        android:autofillHints="picture"
+        android:hint="@string/PictureURL"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A" />
 
 </LinearLayout>

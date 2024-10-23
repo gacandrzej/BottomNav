@@ -13,4 +13,8 @@
     <string name="addProduct">Add new product</string>
     <string name="Basket">Basket</string>
     <string name="Admin">Admin</string>
+    <string name="Description">Description</string>
+    <string name="ItemName">Product name</string>
+    <string name="Price">product price\n</string>
+    <string name="PictureURL">picrure URL</string>
 </resources>
