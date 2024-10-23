@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize fragments once and store in a map
         fragmentMap = new HashMap<>();
         fragmentMap.put(R.id.nav_home, new HomeFragment());
-        fragmentMap.put(R.id.nav_gallery, new BasketFragment());
+        fragmentMap.put(R.id.nav_basket, new BasketFragment());
         fragmentMap.put(R.id.nav_search, new SearchFragment());
         fragmentMap.put(R.id.nav_item_list, new ItemListFragment());
 
