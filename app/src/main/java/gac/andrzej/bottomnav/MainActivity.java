@@ -21,7 +21,8 @@ import gac.andrzej.bottomnav.Fragment.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    private Map<Integer, Fragment> fragmentMap;  // Store fragment instances
+    private Map<Integer, Fragment> fragmentMap;
+    private Fragment activeFragment;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -61,12 +62,37 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean loadFragment(Fragment fragment) {
         // Switch to the selected fragment
+        /*
+        Proste zastępowanie
+         */
+//        if (fragment != null) {
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .setReorderingAllowed(true)  // Allow optimized fragment reordering
+//                    .replace(R.id.main_content, fragment)
+//                    .commit();
+//            return true;
+//        }
+
+        // Ukrywanie starych fragmentów i dodawanie nowych
         if (fragment != null) {
-            getSupportFragmentManager()
+            var transaction = getSupportFragmentManager()
                     .beginTransaction()
-                    .setReorderingAllowed(true)  // Allow optimized fragment reordering
-                    .replace(R.id.main_content, fragment)
-                    .commit();
+                    .setReorderingAllowed(true);
+
+            if (activeFragment != null) {
+                transaction.hide(activeFragment); // Ukrywamy stary zamiast go niszczyć
+            }
+
+            // Jeśli fragment nie był jeszcze dodany do managera, dodajemy go
+            if (!fragment.isAdded()) {
+                transaction.add(R.id.main_content, fragment);
+            } else {
+                transaction.show(fragment); // Jeśli już jest, po prostu go pokazujemy
+            }
+
+            transaction.commit();
+            activeFragment = fragment; // Zapamiętujemy nowy aktywny fragment
             return true;
         }
         return false;
