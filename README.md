@@ -1,3 +1,87 @@
+# Nawigacja dolna
+
+Ten projekt to aplikacja na Androida, która demonstruje, jak zarządzać listą elementów przechowywanych w lokalnej bazie danych. Główny ekran składa się z listy elementów z funkcjonalnością dodawania, aktualizowania i usuwania ich.
+
+---
+
+## Implementacja Bottom Navigation w Androidzie (Metoda Show/Hide)
+
+Dokumentacja procesowa implementacji dolnej nawigacji z zachowaniem stanu fragmentów.
+
+### 1. Definicja Zasobów Menu (`res/menu/`)
+Pierwszym krokiem jest utworzenie pliku XML definiującego elementy nawigacji. Kluczowe jest nadanie unikalnych `id`, które zostaną później powiązane w kodzie Javy.
+
+```xml
+<menu xmlns:android="[http://schemas.android.com/apk/res/android](http://schemas.android.com/apk/res/android)">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Home" />
+</menu>
+```
+
+### 2. Layout Główny (activity_main.xml)
+
+Zastosowanie CoordinatorLayout pozwala na lepszą interakcję z innymi komponentami Material Design. FrameLayout służy jako kontener, w którym dynamicznie wyświetlane są fragmenty.
+
+```xml
+<androidx.coordinatorlayout.widget.CoordinatorLayout ...>
+    <FrameLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_navigation_menu" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+```
+
+### 3. Logika sterowania (MainActivity.java)
+Implementacja opiera się na mapowaniu identyfikatorów menu na instancje fragmentów oraz zarządzaniu ich widocznością.
+
+Inicjalizacja
+Fragmenty są tworzone raz i przechowywane w HashMap, co zapobiega wyciekom pamięci i zbędnemu obciążeniu procesora.
+
+Metoda loadFragment(Fragment fragment)
+W przeciwieństwie do standardowej metody .replace(), zastosowano podejście Show/Hide:
+
+hide(activeFragment): Ukrywa obecnie widoczny fragment bez niszczenia jego widoku.
+
+isAdded(): Sprawdza, czy wybrany fragment był już dodany do FragmentManager.
+
+add() / show(): Dodaje fragment przy pierwszym wywołaniu lub odkrywa go, jeśli już istnieje.
+
+
+---
+
+### Funkcjonalności
+
+
+- Wyświetlanie elementów: Wyświetla listę elementów w RecyclerView.
+
+- Dodawanie elementu: Przycisk FloatingActionButton pozwala użytkownikom dodawać nowe elementy za pomocą okna dialogowego.
+
+- Aktualizacja elementu: Długie naciśnięcie na element otwiera okno dialogowe do aktualizacji jego szczegółów.
+
+- Usuwanie elementu: Przesunięcie palcem w lewo lub w prawo po elemencie usuwa go z bazy danych i listy.
+
+
+---
+
+### Szczegóły implementacji
+
+Aplikacja jest zbudowana przy użyciu Fragment (ItemListFragment), który zarządza interfejsem użytkownika i interakcjami.
+- RecyclerView i ItemAdapter: Służą do wydajnego wyświetlania listy elementów.
+- DatabaseHelper: Niestandardowa klasa do zarządzania operacjami na bazie danych SQLite (CRUD).
+- AlertDialog: Używany do dodawania i aktualizowania elementów.
+- ItemTouchHelper: Zaimplementowany dla funkcji usuwania przez przesunięcie palcem.
+
+---
+
 ![image](https://github.com/user-attachments/assets/4ebc3060-d252-4afd-8921-8f8523beec9a)
 
 
