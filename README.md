@@ -39,8 +39,56 @@ Zastosowanie CoordinatorLayout pozwala na lepszą interakcję z innymi komponent
         app:menu="@menu/bottom_navigation_menu" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 ```
+### 3: Inicjalizacja i Mapa Fragmentów
 
-### 3. Logika sterowania (MainActivity.java)
+W MainActivity tworzymy mapę, która łączy ID przycisku z menu z konkretnym obiektem fragmentu.
+
+```Java
+fragmentMap = new HashMap<>();
+fragmentMap.put(R.id.nav_home, new HomeFragment());
+```
+// ... dodajemy resztę
+Dlaczego mapa? Pozwala to uniknąć wielokrotnego używania instrukcji if/else lub switch w dalszej części kodu.
+
+### 4: Ustawienie stanu początkowego
+
+Gdy aplikacja się włącza (savedInstanceState == null), musimy ręcznie załadować pierwszy fragment (zazwyczaj Home) i zaznaczyć odpowiednią ikonę na pasku.
+
+```Java
+if (savedInstanceState == null) {
+bottomNavigationView.setSelectedItemId(R.id.nav_home);
+loadFragment(fragmentMap.get(R.id.nav_home));
+}
+```
+### 5: Obsługa kliknięć (Listener)
+
+Musimy powiedzieć aplikacji, co ma zrobić, gdy użytkownik kliknie w ikonę. Pobieramy fragment z mapy na podstawie ID klikniętego elementu.
+
+```java
+bottomNavigationView.setOnItemSelectedListener(item -> {
+Fragment selectedFragment = fragmentMap.get(item.getItemId());
+return loadFragment(selectedFragment);
+});
+```
+### 6: Logika przełączania (Metoda loadFragment)
+
+To serce  nawigacji. Metoda działa w trzech podkrokach:
+
+- Ukrycie (hide): Jeśli mamy jakiś aktywny fragment, chowamy go, ale nie usuwamy z pamięci.
+
+- Dodanie (add): Jeśli fragment jest wybierany pierwszy raz (!fragment.isAdded()), dodajemy go do kontenera.
+
+- Pokazanie (show): Jeśli fragment był już kiedyś dodany, po prostu go odkrywamy.
+
+#### Podsumowanie :   
+
+- FragmentManager: Zarządca, który "wkłada" i "wyjmuje" fragmenty z layoutu.
+
+- FragmentTransaction: Seria operacji na fragmentach (zawsze kończymy ją metodą .commit()).
+
+- ActiveFragment: Zmienna pomocnicza, która trzyma "stary" fragment, żebyśmy wiedzieli, co ukryć przed pokazaniem nowego.
+
+### 7. Logika sterowania (MainActivity.java)
 Implementacja opiera się na mapowaniu identyfikatorów menu na instancje fragmentów oraz zarządzaniu ich widocznością.
 
 Inicjalizacja
