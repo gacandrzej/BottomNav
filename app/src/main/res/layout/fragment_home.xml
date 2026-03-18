@@ -13,4 +13,13 @@
         android:text="@string/home_fragment"
         android:textColor="#212121" />
 
+    <EditText
+        android:id="@+id/editText_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Wpisz coś, aby sprawdzić stan..."
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:background="@android:drawable/editbox_background" />
+
 </FrameLayout>
